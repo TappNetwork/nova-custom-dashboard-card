@@ -117,6 +117,7 @@ export default {
             selectedCard: null,
             cards: [],
             layout: [],
+            layouts: [],
         };
     },
 
@@ -172,10 +173,16 @@ export default {
                 this.layout = JSON.parse(layout);
             }
         },
+        async fetchUserDashboards() {
+            const { data: layouts } = await Nova.request().get(`/api/v1/users/${Nova.config.userId}/dashboards`)
+
+            this.layouts = layouts;
+        }
     },
 
     mounted() {
         this.fetchCards();
+        this.fetchUserDashboards();
     },
 }
 </script>
