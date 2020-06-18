@@ -14,9 +14,9 @@
         "laravel-mix": "^1.0"
     },
     "dependencies": {
-        "gridstack": "^0.4.0",
+        "gridstack": "^1.1.2",
         "laravel-nova": "^1.0.2",
         "vue": "^2.5.0",
-        "vue-grid-layout": "^2.1.13"
+        "vue-grid-layout": "^2.3.7"
     }
 }

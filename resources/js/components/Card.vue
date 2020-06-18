@@ -60,7 +60,6 @@
                     :is-resizable="true"
                     :is-mirrored="false"
                     :vertical-compact="true"
-                    :margin="[0, 0]"
                     :use-css-transforms="true"
                     @layout-updated="saveLayout">
                 <grid-item v-for="(item, index) in layout"
@@ -130,11 +129,6 @@ export default {
         isComponentAvailable(component) {
             return typeof this.$options.components[component] !== 'undefined';
         },
-
-        saveLayout(layout) {
-            localStorage.setItem('nova-dashboard', JSON.stringify(layout));
-        },
-
         openModal() {
             this.modalOpen = true;
         },
@@ -163,6 +157,13 @@ export default {
             this.closeModal();
         },
 
+        saveLayout(layout) {
+            localStorage.setItem('nova-dashboard', JSON.stringify(layout));
+        },
+
+        async storeUserLayout(layout){
+            const { data: layout } = await Nova.request().post('/api/v1/dashboards');
+        },
         async fetchCards() {
             const { data: cards } = await Nova.request().get('/nova-vendor/beyondcode/nova-custom-dashboard-card/cards');
 
