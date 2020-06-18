@@ -1,6 +1,13 @@
 <template>
     <div>
+        <div class="d-flex flex-row justify-content-start">
+            <select>
+                <option v-for="layout in layouts">
+                    {{layout.id}}
+                </option>
+            </select>
         <button @click="openModal" class="mb-3 btn btn-default btn-primary">Add Card</button>
+        </div>
 
         <portal to="modals">
             <transition name="fade">
@@ -88,6 +95,9 @@
                     </div>
                 </grid-item>
             </grid-layout>
+            <button class="btn btn-default btn-primary" :disabled="!layoutUpdated">
+                Save
+            </button>
         </div>
     </div>
 </template>
@@ -113,6 +123,7 @@ export default {
     data() {
         return {
             modalOpen: false,
+            layoutUpdated: false,
             selectedCard: null,
             cards: [],
             layout: [],
@@ -159,10 +170,11 @@ export default {
 
         saveLayout(layout) {
             localStorage.setItem('nova-dashboard', JSON.stringify(layout));
+            this.storeUserLayout(layout);
         },
 
         async storeUserLayout(layout){
-            const { data: layout } = await Nova.request().post('/api/v1/dashboards');
+            const { data: userLayout } = await Nova.request().post('/api/v1/dashboards');
         },
         async fetchCards() {
             const { data: cards } = await Nova.request().get('/nova-vendor/beyondcode/nova-custom-dashboard-card/cards');
