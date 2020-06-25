@@ -1,13 +1,6 @@
 <template>
     <div>
-        <div class="d-flex flex-row justify-content-start">
-            <select>
-                <option v-for="layout in layouts">
-                    {{layout.id}}
-                </option>
-            </select>
         <button @click="openModal" class="mb-3 btn btn-default btn-primary">Add Card</button>
-        </div>
 
         <portal to="modals">
             <transition name="fade">
@@ -97,6 +90,9 @@
             </grid-layout>
             <button class="btn btn-default btn-primary" :disabled="!layoutUpdated">
                 Save
+            </button>
+            <button class="btn btn-default btn-primary">
+                Reset
             </button>
         </div>
     </div>

@@ -60373,28 +60373,14 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("div", { staticClass: "d-flex flex-row justify-content-start" }, [
-        _c(
-          "select",
-          _vm._l(_vm.layouts, function(layout) {
-            return _c("option", [
-              _vm._v(
-                "\n                " + _vm._s(layout.id) + "\n            "
-              )
-            ])
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "mb-3 btn btn-default btn-primary",
-            on: { click: _vm.openModal }
-          },
-          [_vm._v("Add Card")]
-        )
-      ]),
+      _c(
+        "button",
+        {
+          staticClass: "mb-3 btn btn-default btn-primary",
+          on: { click: _vm.openModal }
+        },
+        [_vm._v("Add Card")]
+      ),
       _vm._v(" "),
       _c(
         "portal",
@@ -60635,7 +60621,11 @@ var render = function() {
               attrs: { disabled: !_vm.layoutUpdated }
             },
             [_vm._v("\n            Save\n        ")]
-          )
+          ),
+          _vm._v(" "),
+          _c("button", { staticClass: "btn btn-default btn-primary" }, [
+            _vm._v("\n            Reset\n        ")
+          ])
         ],
         1
       )
