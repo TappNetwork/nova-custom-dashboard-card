@@ -99,9 +99,7 @@
 </template>
 
 <script>
-
 import VueGridLayout from 'vue-grid-layout'
-
 import DynamicCardWrapper from './DynamicCardWrapper';
 
 const GridLayout = VueGridLayout.GridLayout;
@@ -170,7 +168,10 @@ export default {
         },
 
         async storeUserLayout(layout){
-            const { data: userLayout } = await Nova.request().post('/api/v1/dashboards');
+            const { data: userLayout } = await Nova.request().post('/api/v1/dashboards', {
+                layout: JSON.stringify(layout),
+                user_id: Nova.config.userId,
+            });
         },
         async fetchCards() {
             const { data: cards } = await Nova.request().get('/nova-vendor/beyondcode/nova-custom-dashboard-card/cards');

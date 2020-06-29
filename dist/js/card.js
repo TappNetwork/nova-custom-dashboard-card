@@ -1339,7 +1339,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
 var GridLayout = __WEBPACK_IMPORTED_MODULE_3_vue_grid_layout___default.a.GridLayout;
 var GridItem = __WEBPACK_IMPORTED_MODULE_3_vue_grid_layout___default.a.GridItem;
 
@@ -1410,7 +1409,10 @@ var GridItem = __WEBPACK_IMPORTED_MODULE_3_vue_grid_layout___default.a.GridItem;
                         switch (_context.prev = _context.next) {
                             case 0:
                                 _context.next = 2;
-                                return Nova.request().post('/api/v1/dashboards');
+                                return Nova.request().post('/api/v1/dashboards', {
+                                    layout: __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_json_stringify___default()(layout),
+                                    user_id: Nova.config.userId
+                                });
 
                             case 2:
                                 _ref2 = _context.sent;
