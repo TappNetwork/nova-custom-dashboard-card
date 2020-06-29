@@ -172,6 +172,8 @@ export default {
                 layout: JSON.stringify(layout),
                 user_id: Nova.config.userId,
             });
+
+            this.layout = JSON.parse(userLayout);
         },
         async fetchCards() {
             const { data: cards } = await Nova.request().get('/nova-vendor/beyondcode/nova-custom-dashboard-card/cards');
@@ -184,13 +186,14 @@ export default {
             }
         },
         async fetchUserDashboards() {
-            const { data: layouts } = await Nova.request().get(`/api/v1/users/${Nova.config.userId}/dashboards`)
+            const { data: layout } = await Nova.request().get(`/api/v1/users/${Nova.config.userId}/dashboards`)
 
-            this.layouts = layouts;
+            this.layout = JSON.parse(layout.data[0].layout);
         }
     },
 
     mounted() {
+        localStorage.clear();
         this.fetchCards();
         this.fetchUserDashboards();
     },

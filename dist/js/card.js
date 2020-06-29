@@ -1418,7 +1418,10 @@ var GridItem = __WEBPACK_IMPORTED_MODULE_3_vue_grid_layout___default.a.GridItem;
                                 _ref2 = _context.sent;
                                 userLayout = _ref2.data;
 
-                            case 4:
+
+                                this.layout = JSON.parse(userLayout);
+
+                            case 5:
                             case 'end':
                                 return _context.stop();
                         }
@@ -1472,7 +1475,7 @@ var GridItem = __WEBPACK_IMPORTED_MODULE_3_vue_grid_layout___default.a.GridItem;
         }(),
         fetchUserDashboards: function () {
             var _ref5 = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_asyncToGenerator___default()(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3() {
-                var _ref6, layouts;
+                var _ref6, layout;
 
                 return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
                     while (1) {
@@ -1483,10 +1486,10 @@ var GridItem = __WEBPACK_IMPORTED_MODULE_3_vue_grid_layout___default.a.GridItem;
 
                             case 2:
                                 _ref6 = _context3.sent;
-                                layouts = _ref6.data;
+                                layout = _ref6.data;
 
 
-                                this.layouts = layouts;
+                                this.layout = JSON.parse(layout.data[0].layout);
 
                             case 5:
                             case 'end':
@@ -1505,6 +1508,7 @@ var GridItem = __WEBPACK_IMPORTED_MODULE_3_vue_grid_layout___default.a.GridItem;
     },
 
     mounted: function mounted() {
+        localStorage.clear();
         this.fetchCards();
         this.fetchUserDashboards();
     }
